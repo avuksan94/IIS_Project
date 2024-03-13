@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <start>
+        <element name="Workout">
+            <interleave>
+                <element name="Name">
+                    <data type="string">
+                        <param name="minLength">5</param>
+                        <param name="maxLength">255</param>
+                        <param name="pattern">[^\s].*</param>
+                    </data>
+                </element>
+                <element name="Instructions">
+                    <data type="string">
+                        <param name="minLength">5</param>
+                        <param name="maxLength">1000</param>
+                        <param name="pattern">[^\s].*</param>
+                    </data>
+                </element>
+                <element name="Type">
+                    <choice>
+                        <value>CHEST</value>
+                        <value>LEGS</value>
+                        <value>BACK</value>
+                        <value>TRICEPS</value>
+                        <value>BICEPS</value>
+                        <value>NECK</value>
+                    </choice>
+                </element>
+                <element name="NumberOfSets">
+                    <data type="integer">
+                        <param name="minInclusive">1</param>
+                        <param name="maxInclusive">12</param>
+                    </data>
+                </element>
+                <element name="SetDuration">
+                    <data type="integer">
+                        <param name="minInclusive">1</param>
+                        <param name="maxInclusive">180</param>
+                    </data>
+                </element>
+                <element name="Content">
+                    <data type="string">
+                        <param name="minLength">5</param>
+                        <param name="maxLength">255</param>
+                        <param name="pattern">https://.*</param>
+                    </data>
+                </element>
+            </interleave>
+        </element>
+    </start>
+</grammar>

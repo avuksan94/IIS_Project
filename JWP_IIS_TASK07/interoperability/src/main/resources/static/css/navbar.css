@@ -1,0 +1,12 @@
+/* Gradient dark background */
+.custom-gradient {
+    background: linear-gradient(90deg, #434343 0%, #000000 100%) !important;
+}
+
+.navbar-dark .navbar-brand, .navbar-dark .nav-link {
+    color: #ffffff !important;
+}
+
+.navbar-dark .nav-link.dropdown-toggle {
+    color: #ffffff !important;
+}

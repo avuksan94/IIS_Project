@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://avtest.com/soap-web-service" version="1.0">
+      
+  
+  <xs:element name="searchCriteria" type="xs:string"/>
+    
+
+</xs:schema>

@@ -1,0 +1,39 @@
+
+.navbar {
+    background-color: #212529; /* Bootstrap dark */
+    border-bottom: 1px solid #dee2e6; /* Optional: adds a slight border under the navbar for definition */
+}
+
+body, .custom-gradient-content {
+    background-color: #343a40; /* Dark grey for the body and section backgrounds */
+    color: #36454F; /* White for text to increase contrast */
+}
+
+.card {
+    background-color: #495057; /* Slightly lighter grey for card backgrounds */
+    color: #36454F; /* White for text inside cards */
+}
+
+.card h5, .card p {
+    color: #36454F; /* Ensure headings and paragraphs inside cards are also white */
+    margin-bottom: 0.5rem; /* Optional: Adjust spacing between text elements as needed */
+}
+
+/* Optional: Increase the font weight for headings to make them stand out more */
+.card h5 {
+    font-weight: bold;
+}
+
+/* Optional: Adjust the font size if needed for better readability */
+.card-body p {
+    font-size: 1rem; /* Adjust as needed */
+}
+
+.card-img {
+    width: 100%; /* Ensure images are responsive and fill the container width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 300px; /* Maximum width of the image */
+    max-height: 250px; /* Maximum height of the image */
+    object-fit: cover; /* Cover the container without losing aspect ratio */
+    margin: 0 auto; /* Center the image within its column */
+}

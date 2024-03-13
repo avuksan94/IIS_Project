@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://avtest.com/soap-web-serviceCF"
+           targetNamespace="http://avtest.com/soap-web-serviceCF"
+           elementFormDefault="qualified">
+
+    <xs:element name="WorkoutRequest" type="tns:WorkoutRequestType"/>
+    <xs:complexType name="WorkoutRequestType">
+        <xs:sequence>
+            <xs:element name="searchCriteria" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="WorkoutResponse" type="tns:WorkoutResponseType"/>
+    <xs:complexType name="WorkoutResponseType">
+        <xs:sequence>
+            <xs:element name="workout" type="tns:XMLWorkoutResponseType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="XMLWorkoutResponseType">
+        <xs:sequence>
+            <xs:element name="workoutId" type="xs:long"/>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Instructions" type="xs:string"/>
+            <xs:element name="Type" type="xs:string"/>
+            <xs:element name="NumberOfSets" type="xs:int"/>
+            <xs:element name="SetDuration" type="xs:int"/>
+            <xs:element name="ImageContent" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="WorkoutType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CHEST"/>
+            <xs:enumeration value="LEGS"/>
+            <xs:enumeration value="BACK"/>
+            <xs:enumeration value="TRICEPS"/>
+            <xs:enumeration value="BICEPS"/>
+            <xs:enumeration value="NECK"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="Workouts" type="tns:WorkoutsWrapperType"/>
+    <xs:complexType name="WorkoutsWrapperType">
+        <xs:sequence>
+            <xs:element name="Workout" type="tns:XMLWorkoutResponseType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+  <xs:element name="Workout" type="xmlWorkoutModel"/>
+  <xs:complexType name="xmlWorkoutModel">
+    <xs:sequence>
+      <xs:element
+              name="Name"
+              type="LimitedStringExerciseName"/>
+
+      <xs:element
+              name="Instructions"
+              type="LimitedStringInstructions"/>
+
+      <xs:element name="Type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="CHEST"/>
+            <xs:enumeration value="BACK"/>
+            <xs:enumeration value="NECK"/>
+            <xs:enumeration value="LEGS"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="NumberOfSets">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="12"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="SetDuration">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="180"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      
+      <xs:element
+              name="Content"
+              type="xs:string"/>
+    
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="LimitedStringExerciseName">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="5" />
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LimitedStringInstructions">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="5" />
+      <xs:maxLength value="1000" />
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

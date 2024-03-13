@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ns1="http://avtest.com/soap-web-service"
+           targetNamespace="http://avtest.com/soap-web-service"
+           version="1.0">
+      
+  
+  <xs:import namespace="http://avtest.com/soap-web-service" schemaLocation="schema1.xsd"/>
+      
+  
+  <xs:element name="Workout" nillable="true" type="xs:anyType"/>
+      
+  
+  <xs:element name="Workouts" type="workoutsWrapper"/>
+      
+  
+  <xs:complexType name="jwtResponse">
+            
+    
+    <xs:sequence/>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType name="soapservice03Application">
+            
+    
+    <xs:sequence/>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType name="webServiceConfig">
+            
+    
+    <xs:complexContent>
+                  
+      
+      <xs:extension base="wsConfigurerAdapter">
+                        
+        
+        <xs:sequence/>
+                      
+      
+      </xs:extension>
+                
+    
+    </xs:complexContent>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType name="wsConfigurerAdapter">
+            
+    
+    <xs:sequence/>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType name="WorkoutRequest">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element minOccurs="0" ref="ns1:searchCriteria"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType name="WorkoutResponse">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element minOccurs="0" name="workouts">
+                        
+        
+        <xs:complexType>
+                              
+          
+          <xs:sequence>
+                                    
+            
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="workout" type="xmlWorkoutResponse"/>
+                                  
+          
+          </xs:sequence>
+                            
+        
+        </xs:complexType>
+                      
+      
+      </xs:element>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType name="xmlWorkoutResponse">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element minOccurs="0" name="workoutId" type="xs:long"/>
+                  
+      
+      <xs:element minOccurs="0" name="Name" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="Instructions" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="Type" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="NumberOfSets" type="xs:int"/>
+                  
+      
+      <xs:element minOccurs="0" name="SetDuration" type="xs:int"/>
+                  
+      
+      <xs:element minOccurs="0" name="ImageContent" type="xs:string"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType name="workoutsWrapper">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element maxOccurs="unbounded" minOccurs="0" ref="Workout"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType name="xmlWorkoutModel">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element minOccurs="0" name="Name" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="Instructions" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="Type" type="workoutType"/>
+                  
+      
+      <xs:element minOccurs="0" name="NumberOfSets" type="xs:int"/>
+                  
+      
+      <xs:element minOccurs="0" name="SetDuration" type="xs:int"/>
+                  
+      
+      <xs:element minOccurs="0" name="Content" type="xs:string"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:simpleType name="workoutType">
+            
+    
+    <xs:restriction base="xs:string">
+                  
+      
+      <xs:enumeration value="CHEST"/>
+                  
+      
+      <xs:enumeration value="LEGS"/>
+                  
+      
+      <xs:enumeration value="BACK"/>
+                  
+      
+      <xs:enumeration value="TRICEPS"/>
+                  
+      
+      <xs:enumeration value="BICEPS"/>
+                  
+      
+      <xs:enumeration value="NECK"/>
+                
+    
+    </xs:restriction>
+          
+  
+  </xs:simpleType>
+
+  <xs:element name="searchCriteria" type="xs:string"/>
+    
+
+</xs:schema>

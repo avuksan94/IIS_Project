@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://avtest.com/soap-web-service"
+           xmlns:tns="http://avtest.com/soap-web-service"
+           elementFormDefault="qualified"
+           version="1.0">
+
+  <xs:complexType name="xmlWorkoutModel">
+    <xs:sequence>
+      <xs:element name="Name" type="tns:LimitedStringExerciseName"/>
+      <xs:element name="Instructions" type="tns:LimitedStringInstructions"/>
+      <xs:element name="Type" type="xs:string"/>
+      <xs:element name="NumberOfSets" type="xs:integer"/>
+      <xs:element name="SetDuration" type="xs:integer"/>
+      <xs:element name="Content" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Workout" type="tns:xmlWorkoutModel"/>
+
+  <xs:element name="WorkoutRequest" type="tns:WorkoutRequestType"/>
+  <xs:complexType name="WorkoutRequestType">
+    <xs:sequence>
+      <xs:element name="searchCriteria" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="WorkoutResponse" type="tns:WorkoutResponseType"/>
+
+  <xs:complexType name="WorkoutResponseType">
+    <xs:sequence>
+      <xs:element name="workouts" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="workout" type="tns:xmlWorkoutModel" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WorkoutsType">
+    <xs:sequence>
+      <xs:element name="Workout" type="tns:xmlWorkoutModel" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Workouts" type="tns:WorkoutsType"/>
+
+  <xs:simpleType name="LimitedStringExerciseName">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="5"/>
+      <xs:maxLength value="255"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LimitedStringInstructions">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="5"/>
+      <xs:maxLength value="1000"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
